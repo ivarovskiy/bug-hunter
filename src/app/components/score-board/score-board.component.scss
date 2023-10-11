@@ -1,0 +1,25 @@
+.scoresContainer {
+  float: right;
+  display: flex;
+
+  .title {
+    color: #eee4da;
+    font-size: 12;
+  }
+
+  .cpContainer,
+  .hmContainer {
+    position: relative;
+    display: block;
+    background: #bbada0;
+    padding: 15px 25px;
+    font-size: 25px;
+    height: 25px;
+    line-height: 47px;
+    font-weight: bold;
+    border-radius: 3px;
+    color: white;
+    margin-top: 8px;
+    text-align: center;
+  }
+}

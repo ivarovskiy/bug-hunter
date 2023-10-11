@@ -1,0 +1,47 @@
+.gameControl {
+  margin: 20px;
+
+  .heading {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .title {
+    font-size: 80px;
+    font-weight: bold;
+    margin: 0;
+    display: block;
+    float: left;
+  }
+
+  .howToPlay {
+    color: #776e65;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .aboveGame {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .intro {
+    line-height: 1.2;
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .newGame {
+    background: #8f7a66;
+    border-radius: 3px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #f9f6f2;
+    font-size: 18px;
+    height: 40px;
+    line-height: 42px;
+    cursor: pointer;
+  }
+}

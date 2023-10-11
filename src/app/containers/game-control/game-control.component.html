@@ -1,0 +1,21 @@
+<div class="gameControl">
+  <div class="heading">
+    <div class="title">BugHunter</div>
+    <app-score-board [scores]="scoreboard"></app-score-board>
+    <app-timer
+      [timeout]="inputTime"
+      (timeoutReached)="handleTimeout()"></app-timer>
+  </div>
+
+  <div class="aboveGame">
+    <div class="intro">
+      Kill de bugs, get to clean code!
+      <a href="#" class="howToPlay"> How to play →</a>
+    </div>
+
+    <input placeholder="Choose a time (ms)" [(ngModel)]="inputTime" />
+    <button (click)="newGame()" class="newGame">New Game</button>
+  </div>
+
+  <app-board #boardComponent [activeCellId]="activeCellId"></app-board>
+</div>
