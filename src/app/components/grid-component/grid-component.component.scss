@@ -1,19 +1,23 @@
 .board {
   display: grid;
-  grid-template-columns: repeat(10, 1fr); /* 10 колонок */
-  grid-gap: 5px; /* Расстояние между ячейками */
+  grid-template-columns: repeat(10, 1fr); 
+  grid-gap: 5px; 
   padding: 10px;
-  width: 700px; /* Ширина доски */
-  height: 700px; /* Высота доски */
-  border: 2px solid var(--secondary-bg-color); /* Граница доски */
-  margin: 40px auto 40px auto; /* Центрирование доски */
+  width: 700px; 
+  height: 700px; 
+  border: 2px solid var(--secondary-bg-color); 
+  margin: 40px auto 40px auto;
 
-  background: #bbada0;
+  background: #42313a;
   border-radius: 6px;
+  font-size: 25px;
+  font-weight: bold;
 }
+
 
 .game {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #f8f3c6;
 }

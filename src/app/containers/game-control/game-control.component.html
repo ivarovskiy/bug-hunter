@@ -12,28 +12,23 @@
       <app-score-board [score]="scoreboard$ | asyncy"></app-score-board>
 
       <div class="formGroup">
-        <div class="flexColumn">
-          <input
-            id="timer"
-            class="formInput"
-            placeholder="Choose a time (s)"
-            required=""
-            [formControl]="inputTime" />
-          <label
-            for="timer"
-            *ngIf="inputTime.hasError('pattern')"
-            class="formLabel">
-            Only numbers!!!
-          </label>
-        </div>
-
-        <button
-          (click)="newGame()"
-          class="newGame"
-          [disabled]="!inputTime.valid">
-          New Game
-        </button>
+        <input
+          id="timer"
+          class="formInput"
+          placeholder="Choose a time (s)"
+          required=""
+          [formControl]="inputTime" />
+        <label
+          for="timer"
+          *ngIf="inputTime.hasError('pattern')"
+          class="formLabel">
+          Only numbers!!!
+        </label>
       </div>
+
+      <button (click)="newGame()" class="newGame" [disabled]="!inputTime.valid">
+        New Game
+      </button>
     </section>
   </div>
 
