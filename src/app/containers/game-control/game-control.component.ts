@@ -46,7 +46,7 @@ export class GameControlComponent implements OnDestroy {
 
   inputTime: FormControl = new FormControl('', [
     Validators.required,
-    Validators.pattern(/^\d+$/),
+    Validators.pattern(/^\d+(\.\d+)?$/),
   ]);
 
   //scoreboard
