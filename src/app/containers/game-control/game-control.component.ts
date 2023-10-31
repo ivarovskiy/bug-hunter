@@ -131,7 +131,7 @@ export class GameControlComponent implements OnDestroy {
 
     this.gridService.drawGrid(this.rules.numberOfCells);
     this.activeCellId = this.gridService.activateCell();
-    this.timerComponent.startTimer();
+    // this.timerComponent.startTimer(); игра начнется после первого эмита пользователя
   }
 
   handleTimeout(): void {
