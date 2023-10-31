@@ -1,36 +1,42 @@
 <div class="gameControl">
-  <section class="heading">
-    <div class="title">BugHunter</div>
-    <app-score-board [score]="scoreboard$ | asyncy"></app-score-board>
-  </section>
-
-  <section class="aboveGame">
-    <div class="intro">
-      Kill de bugs, get to clean code!
-      <a href="#help" class="howToPlay"> How to play →</a>
-    </div>
-
-    <div class="formGroup">
-      <div class="flexColumn">
-        <input
-          id="timer"
-          class="formInput"
-          placeholder="Choose a time (s)"
-          required=""
-          [formControl]="inputTime" />
-        <label
-          for="timer"
-          *ngIf="inputTime.hasError('pattern')"
-          class="formLabel">
-          Only numbers!!!
-        </label>
+  <div class="header">
+    <section class="heading">
+      <div class="title">BugHunter</div>
+      <div class="intro">
+        Kill de bugs, get to clean code!
+        <a href="#help" class="howToPlay"> How to play →</a>
       </div>
+    </section>
 
-      <button (click)="newGame()" class="newGame" [disabled]="!inputTime.valid">
-        New Game
-      </button>
-    </div>
-  </section>
+    <section class="aboveGame">
+      <app-score-board [score]="scoreboard$ | asyncy"></app-score-board>
+
+      <div class="formGroup">
+        <div class="flexColumn">
+          <input
+            id="timer"
+            class="formInput"
+            placeholder="Choose a time (s)"
+            required=""
+            [formControl]="inputTime" />
+          <label
+            for="timer"
+            *ngIf="inputTime.hasError('pattern')"
+            class="formLabel">
+            Only numbers!!!
+          </label>
+        </div>
+
+        <button
+          (click)="newGame()"
+          class="newGame"
+          [disabled]="!inputTime.valid">
+          New Game
+        </button>
+      </div>
+    </section>
+  </div>
+
   <app-timer
     [timeout]="inputTime.value"
     (timeoutReached)="handleTimeout()"></app-timer>
