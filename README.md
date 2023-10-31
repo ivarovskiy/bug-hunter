@@ -20,3 +20,5 @@ The following technologies were used in the development:
 ## 📝 I went a bit off the requirements, had an idea of how I'd like to see this app, and I hope you like it
 
 ## Thanks for your attention! 🤝
+
+## [Try it yourself](https://ivarovskiy.github.io/bug-hunter/)
