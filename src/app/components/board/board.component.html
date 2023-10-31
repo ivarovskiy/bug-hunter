@@ -1,8 +1,0 @@
-<div class="board">
-  <app-cell
-    *ngFor="let cell of cells"
-    [id]="cell.id"
-    [isActive]="cell.id === activeCellId"
-    [color]="cell.color"
-    (cellClicked)="handleCellClick($event)"></app-cell>
-</div>

@@ -1,21 +1,52 @@
 <div class="gameControl">
-  <div class="heading">
+  <section class="heading">
     <div class="title">BugHunter</div>
-    <app-score-board [scores]="scoreboard"></app-score-board>
-    <app-timer
-      [timeout]="inputTime"
-      (timeoutReached)="handleTimeout()"></app-timer>
-  </div>
+    <app-score-board [score]="scoreboard$ | asyncy"></app-score-board>
+  </section>
 
-  <div class="aboveGame">
+  <section class="aboveGame">
     <div class="intro">
       Kill de bugs, get to clean code!
-      <a href="#" class="howToPlay"> How to play →</a>
+      <a href="#help" class="howToPlay"> How to play →</a>
     </div>
 
-    <input placeholder="Choose a time (ms)" [(ngModel)]="inputTime" />
-    <button (click)="newGame()" class="newGame">New Game</button>
-  </div>
+    <div class="formGroup">
+      <div class="flexColumn">
+        <input
+          id="timer"
+          class="formInput"
+          placeholder="Choose a time (s)"
+          required=""
+          [formControl]="inputTime" />
+        <label
+          for="timer"
+          *ngIf="inputTime.hasError('pattern')"
+          class="formLabel">
+          Only numbers!!!
+        </label>
+      </div>
 
-  <app-board #boardComponent [activeCellId]="activeCellId"></app-board>
+      <button (click)="newGame()" class="newGame" [disabled]="!inputTime.valid">
+        New Game
+      </button>
+    </div>
+  </section>
+  <app-timer
+    [timeout]="inputTime.value"
+    (timeoutReached)="handleTimeout()"></app-timer>
+  <section id="game">
+    <app-grid-component
+      [winner]="winner"
+      [state]="gameState"
+      (clickReached)="handleCellClick()"></app-grid-component>
+  </section>
+
+  <section class="underGame" id="help">
+    <div class="helper">
+      How to play? It's very simple. First you choose the difficulty, in this
+      case it's the timer time, and try to hunt the bugs faster than it breaks
+      the program on your's demo.
+    </div>
+    <div class="madeBy">ivarovskiy</div>
+  </section>
 </div>

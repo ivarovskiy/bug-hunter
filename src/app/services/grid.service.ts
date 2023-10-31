@@ -7,74 +7,47 @@ import { Cell } from '../models/cell';
 })
 export class GridService {
   private cellsSubject = new BehaviorSubject<Cell[]>([]);
-
   cells$: Observable<Cell[]> = this.cellsSubject.asObservable();
 
-  constructor() {
-    this.initializeGrid();
-  }
-
-  public initializeGrid(): void {
+  drawGrid(cellsNumber: number) {
     const cells: Cell[] = [];
 
-    for (let i = 0; i < 100; i++) {
-      cells.push({
+    for (let i = 0; cells.length < cellsNumber; i++) {
+      const cell: Cell = {
         id: i,
         color: 'rgba(238, 228, 218, 0.35)',
         isActive: false,
-      });
+        isUsed: false,
+      };
+
+      cells.push(cell);
     }
 
     this.cellsSubject.next(cells);
   }
 
   activateCell() {
-    const randomId = Math.floor(Math.random() * this.cellsSubject.value.length);
+    const cells = this.cellsSubject.value;
+    const availableCells = cells.filter(cell => !cell.isUsed);
+    if (availableCells.length === 0) {
+      return -1;
+    }
 
-    this.updateCellColor(randomId, 'yellow');
+    const randomIndex = Math.floor(Math.random() * availableCells.length);
+    const randomCell = availableCells[randomIndex];
 
-    return randomId;
+    randomCell.isUsed = true;
+    this.updateCell(randomCell.id, 'yellow', true);
+    return randomCell.id;
   }
 
-  private updateCellColor(targetId: number, newColor: string): void {
+  updateCell(targetId: number, color: string, isActive: boolean) {
     const currentCells = this.cellsSubject.value;
-
-    // Найдите ячейку по id
     const cellToUpdate = currentCells.find(cell => cell.id === targetId);
 
-    // Если ячейка найдена, обновите ее цвет
     if (cellToUpdate) {
-      cellToUpdate.color = newColor;
-      this.cellsSubject.next([...currentCells]); // Обновите cellsSubject
+      (cellToUpdate.isActive = isActive), (cellToUpdate.color = color);
+      this.cellsSubject.next([...currentCells]);
     }
-  }
-
-  updateCells(targetId: number, newColor: string): void {
-    const currentCells = this.cellsSubject.value;
-
-    const condition = (cell: Cell) => cell.id === targetId;
-    const cellsToUpdate = currentCells.filter(condition);
-
-    cellsToUpdate.forEach(cellToUpdate => {
-      cellToUpdate.color = newColor;
-    });
-
-    this.cellsSubject.next(currentCells);
-
-    console.log('updated cells:', this.cellsSubject.value);
-  }
-
-  successClick(targetId: number, isActive: boolean): void {
-    const currentCells = this.cellsSubject.value;
-
-    const condition = (cell: Cell) => cell.id === targetId;
-    const cellsToUpdate = currentCells.filter(condition);
-
-    cellsToUpdate.forEach(cellToUpdate => {
-      cellToUpdate.isActive = isActive;
-      cellToUpdate.color = 'green';
-    });
-
-    this.cellsSubject.next(currentCells);
   }
 }

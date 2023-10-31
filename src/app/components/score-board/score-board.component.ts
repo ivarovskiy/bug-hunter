@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { GameDataService } from 'src/app/services/game-data.service';
+import { Component, Input } from '@angular/core';
+import { Scoreboard } from 'src/app/models/scoreboard';
 
 @Component({
   selector: 'app-score-board',
@@ -7,15 +7,8 @@ import { GameDataService } from 'src/app/services/game-data.service';
   styleUrls: ['./score-board.component.scss'],
 })
 export class ScoreBoardComponent {
-  cpPoints = 0;
-  hmPoints = 0;
-
-  constructor(public gameDataService: GameDataService) {}
-
-  ngOnInit(): void {
-    const { cpPoints, hmPoints } = this.scores;
-
-    this.cpPoints = cpPoints;
-    this.hmPoints = hmPoints;
-  }
+  @Input() score: Scoreboard = {
+    human: 0,
+    system: 0,
+  };
 }

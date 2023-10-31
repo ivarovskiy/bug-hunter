@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimerComponent } from './timer.component';
+import { GridComponentComponent } from './grid-component.component';
 
-describe('TimerComponent', () => {
-  let component: TimerComponent;
-  let fixture: ComponentFixture<TimerComponent>;
+describe('GridComponentComponent', () => {
+  let component: GridComponentComponent;
+  let fixture: ComponentFixture<GridComponentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TimerComponent],
+      declarations: [GridComponentComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TimerComponent);
+    fixture = TestBed.createComponent(GridComponentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

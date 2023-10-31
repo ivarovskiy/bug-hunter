@@ -9,11 +9,11 @@ export class CellComponent {
   @Input() id: number | undefined;
   @Input() isActive = false;
   @Input() color = 'rgba(238, 228, 218, 0.35)';
-  @Output() cellClicked = new EventEmitter<number>();
+  @Output() cellClicked = new EventEmitter<void>();
 
   onClick(): void {
     if (this.isActive) {
-      this.cellClicked.emit(this.id);
+      this.cellClicked.emit();
     }
   }
 }

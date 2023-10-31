@@ -1,0 +1,14 @@
+<div class="board game" *ngIf="state === GameState.Start">New Game!!!</div>
+
+<div class="board" *ngIf="state === GameState.InProgress">
+  <app-cell
+    *ngFor="let cell of cells"
+    [id]="cell.id"
+    [isActive]="cell.isActive"
+    [color]="cell.color"
+    (cellClicked)="handleCellClick()"></app-cell>
+</div>
+
+<div class="board game" *ngIf="state === GameState.End">
+  Game Over!!! {{ winner }} won!
+</div>
