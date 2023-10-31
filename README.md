@@ -11,7 +11,6 @@ The following technologies were used in the development:
 - ### tony-builder/asyncy
 - ### No Css Frameworks
 - ### Scss
-- ### currency-flags
 - ### angular-cli-ghpages
 
 
